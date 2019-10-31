@@ -4,43 +4,77 @@
 <head>
 	<title>The Gossip Project - Users New</title>
 </head>
-<body>
-	<h1>Users New</h1>
-	<h2>Créé ton propre Compte</h2>
 
-	<%= form_tag url_for(action: 'create'), method: "post" do %>
+<body class="bg-light">
 
-	  <%= label_tag 'Prénom' %>
-	  <%= text_field_tag 'first_name', @user.first_name %>
-	  <br /> <br />
+	<div class="container">
+		<div class="py-5 text-center">
+		</br>
+		<h2>Inscription</h2>
+		<p class="lead">Rejoignez la communauté The Gossip Project !</p>
+	</div>
 
-	  <%= label_tag 'Nom' %>
-	  <%= text_field_tag 'last_name', @user.last_name %>
-	  <br /> <br />
+	<div class="col-md-12 order-md-1">
+		<h4 class="mb-3">Informations utilisateur</h4>
 
-	  <%= label_tag 'Description' %>
-	  <%= text_field_tag 'description', @user.description %>
-	  <br /> <br />
+		<%= form_tag url_for(action: 'create'), method: "post" do %>
 
-	  <%= label_tag 'Email' %>
-	  <%= text_field_tag 'email', @user.email %>
-	  <br /> <br />
+			<div class="row">
+				<div class="col-md-6 mb-3">
+					<%= label_tag 'Prénom' %><br />
+					<%= text_field_tag 'first_name', @user.first_name, :class => 'form-control', placeholder: 'Gaël' %>	
+				</div>
+				<div class="col-md-6 mb-3">
+					<%= label_tag 'Nom' %><br />
+					<%= text_field_tag 'last_name', @user.last_name, :class => 'form-control', placeholder: 'Dubois' %>
+				</div>
+			</div>
 
-	  <%= label_tag 'Age' %>
-	  <%= text_field_tag 'age', @user.age %>
-	  <br /> <br />
+			<div class="row">
+				<div class="col-md-6 mb-3">
+					<%= label_tag 'Âge' %><br />
+					<%= text_field_tag 'age', @user.age, :class => 'form-control', placeholder: '43' %>
+				</div>
+				<div class="col-md-6 mb-3">
+					<%= label_tag 'Ville' %><br />
+					<%= text_field_tag 'city_id', @user.city_id, :class => 'form-control', placeholder: 'Paris' %>
+				</div>
+			</div>
 
-	  <%= label_tag 'Ville' %>
-	  <%= text_field_tag 'city_id', @user.city_id %>
-	  <br /> <br />
+			<div class="mb-3">
+				<%= label_tag 'Description' %><br />
+				<%= text_field_tag 'description', @user.description, :class => 'form-control', placeholder: 'Jeune cadre dynamique avide de potins croustillants' %>
+			</div>
 
-	  <%= label_tag 'Mot de passe' %>
-	  <%= text_field_tag 'password', @user.password %>
-	  <br /> <br />
+			<div class="row">
+				<div class="col-md-6 mb-3">
+					<%= label_tag 'Email' %><br />
+					<%= text_field_tag 'email', @user.email, :class => 'form-control', placeholder: 'gael.dubois@gmail.com' %>
+				</div>
+				<div class="col-md-6 mb-3">
+					<%= label_tag 'Mot de passe' %><br />
+					<%= text_field_tag 'password', @user.password, :class => 'form-control', placeholder: 'password' %>
+				</div>
+			</div>
+			
+		</br>
 
-	  <%= submit_tag "S'inscrire" %>
+		<%= submit_tag "S'inscrire", :class => 'btn btn-primary btn-lg btn-block' %>
 
 	<% end %>
+
+</div>
+</div>
+
+<footer class="my-5 pt-5 text-muted text-center text-small">
+	<p class="mb-1">&copy; The Gossip Project</p>
+	<ul class="list-inline">
+		<li class="list-inline-item"><a href="#">Privacy</a></li>
+		<li class="list-inline-item"><a href="#">Terms</a></li>
+		<li class="list-inline-item"><a href="#">Support</a></li>
+	</ul>
+</footer>
+</div>
 
 </body>
 </html>
