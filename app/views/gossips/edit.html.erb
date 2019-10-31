@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>The Gossip Project - Gossips Edit</title>
+</head>
+<body>
+	<h1>Gossips Edit</h1>
+
+	<%= form_tag(url_for(action: 'update') , method: "PATCH") do %>
+​
+            <%= label_tag 'Titre du Gossip' %><br />
+            <%= text_area_tag 'title', @gossip.title, :class => 'w-25 mb-5 form-control', :placeholder => 'Incredible title' %>
+​
+            <%= label_tag 'Contenu du Gossip' %><br />
+            <%= text_area_tag 'content', @gossip.content, :class => 'w-25 mb-5 form-control', :placeholder => 'Incredible content' %>
+​
+            <%= submit_tag 'Modifier le Gossip' %>
+<% end %>
+
+</body>
+</html>

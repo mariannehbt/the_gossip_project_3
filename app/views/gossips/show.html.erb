@@ -1,0 +1,18 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>The Gossip Project - Gossips Show</title>
+</head>
+<body>
+	<h1>Gossips Show</h1>
+	<h2>Gossip n° <%= @gossip.id %> : <%= @gossip.title %></h2>
+	
+	<p>"<%= @gossip.content %>"</p>
+	<p>Par <a href = <%= user_path(@gossip.user_id.to_s) %> > <%= @gossip.user.first_name %></a>, le : <%= @gossip.created_at %></p>
+
+	<p><a href=" <%= edit_gossip_path(@gossip.id.to_s) %> " class="btn btn-primary">Modifier le Gossip</a></p>
+	<p><a href=" <%= gossips_path %> " class="btn btn-primary">Revenir aux Gossips</a></p>
+	
+</body>
+</html>
