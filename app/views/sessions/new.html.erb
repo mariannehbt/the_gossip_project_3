@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>The Gossip Project - Sessions New</title>
+</head>
+<body>
+	<main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">The Gossip Project</h1>
+          <p>Bienvenue sur The Gossip Project. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+        </div>
+      </div>
+
+    </main>
+
+    <%= form_tag url_for(action: 'create'), method: "get" do %>
+
+      <%= label_tag 'Email' %>
+      <%= text_field_tag 'email', @user.email %>
+      <br /> <br />
+
+      <%= label_tag 'Password' %>
+      <%= text_area_tag 'password_digest', @user.password_digest %>
+      <br /> <br />
+
+      <%= submit_tag "Connexion" %>
+
+      <% end %>
+
+</body>
+</html>
