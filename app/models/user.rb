@@ -19,4 +19,6 @@ class User < ApplicationRecord
 
   # 1-N associations with likes
   has_many :likes
+
+  has_secure_password
 end

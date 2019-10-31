@@ -23,7 +23,7 @@ end
 # create aonymous user
 User.create(first_name: 'Anonymous', last_name: 'Unknown',
   description: 'none', email: 'anonymous@mail.com', age: 0,
-  city_id: City.all.sample.id)
+  city_id: City.all.sample.id, password: 'coucou')
 
 # create some users (requires cities)
 10.times do
@@ -32,9 +32,10 @@ User.create(first_name: 'Anonymous', last_name: 'Unknown',
   email = Faker::Internet.unique.safe_email(name: name)
   name = name.split(' ')
   age = rand(16..70)
+  password = Faker::Alphanumeric.alphanumeric(number: 10)
   User.create(first_name: name[0], last_name: name[1],
   description: description, email: email, age: age,
-  city_id: City.all.sample.id)
+  city_id: City.all.sample.id, password: password)
 end
 
 # getting to the gossips (requires users)
