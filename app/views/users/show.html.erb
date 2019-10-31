@@ -15,6 +15,9 @@
 	<h3>Membre depuis le</h3>
 	<p><%= @user.created_at %></p>
 	<h3>Profil mis à jour le</h3>
-	<p><%= @user.updated_at %></p>	
+	<p><%= @user.updated_at %></p>
+
+	<p><a href=" <%= gossips_path %> " class="btn btn-primary">Revenir aux Gossips</a></p>
+
 </body>
 </html>

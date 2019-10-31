@@ -16,7 +16,7 @@ class GossipsController < ApplicationController
     @gossip = Gossip.new(
       'title' => params[:title],
       'content' => params[:content],
-      'user' => User.find(12))
+      'user' => User.first)
 
     if @gossip.save
       redirect_to gossips_path
@@ -34,7 +34,7 @@ class GossipsController < ApplicationController
     @gossip.update(
       title: params[:title],
       content: params[:content],
-      user_id: User.all.sample.id)
+      user_id: User.first.id)
     redirect_to gossips_path
   end
 

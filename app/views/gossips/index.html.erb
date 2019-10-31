@@ -5,24 +5,41 @@
 	<title>The Gossip Project - Gossips Index</title>
 </head>
 <body>
-	<h1>Gossips Index</h1>
-	<p>Bienvenue sur The Gossip Project !</p>
+	<main role="main">
 
-	<a class="btn btn-primary" href=<%= new_gossip_path %> role="button">Poste ton propre Gossip</a>
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">The Gossip Project</h1>
+          <p>Bienvenue sur The Gossip Project. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+          <p><a class="btn btn-primary btn-lg" href= <%= new_gossip_path %> role="button">Poster un Gossip &raquo;</a></p>
+        </div>
+      </div>
 
-	<% @gossips.each do |gossip| %>
-	<div class="row">
-		<div class="col-sm-6">
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title"><%= gossip.title %></h5>
-					<p class="card-text">par : <%= gossip.user.first_name %></p>
-					<a href=<%= gossip_path(gossip.id.to_s) %> class="btn btn-primary"><%= "Gossip n°" + gossip.id.to_s %></a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<% end %>
+      <div class="container">
+        <!-- Example row of columns -->
+
+        <% @gossips.sort.each do |gossip| %>
+        <div class="row">
+          <div class="col-md-4">
+            <h2><%= gossip.title %></h2>
+            <p>par : <%= gossip.user.first_name %></p>
+            <p><a class="btn btn-secondary" href= <%= gossip_path(gossip.id.to_s) %> role="button"><%= "Gossip n°" + gossip.id.to_s %> &raquo;</a></p>
+          </div>
+        </div>
+        <% end %>
+
+        <hr>
+
+      </div> <!-- /container -->
+
+    </main>
+
+
+
+
+	
+
 
 </body>
 </html>

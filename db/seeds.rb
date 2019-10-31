@@ -8,10 +8,22 @@
 
 require 'faker'
 
+ActiveRecord::Base.establish_connection
+ActiveRecord::Base.connection.tables.each do |table|
+  next if table == 'schema_migrations' || table == 'ar_internal_metadata'
+  ActiveRecord::Base.connection.execute("TRUNCATE #{table}")
+  ActiveRecord::Base.connection.reset_pk_sequence!(table)
+end
+
 # building cities (requires nothing)
 10.times do
   City.create(name: Faker::Address.unique.city, zip_code: Faker::Address.unique.zip)
 end
+
+# create aonymous user
+User.create(first_name: 'Anonymous', last_name: 'Unknown',
+  description: 'none', email: 'anonymous@mail.com', age: 0,
+  city_id: City.all.sample.id)
 
 # create some users (requires cities)
 10.times do
@@ -27,7 +39,7 @@ end
 
 # getting to the gossips (requires users)
 20.times do
-  title = Faker::Book.unique.title[3..14]
+  title = Faker::Book.unique.title[0..13]
   sentences = rand(3..8)
   content = ([Faker::Lorem.sentence(word_count: 5,random_words_to_add: 15)] * sentences).join(' ')
   user = rand(1..10)
