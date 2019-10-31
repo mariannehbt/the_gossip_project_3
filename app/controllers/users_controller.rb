@@ -22,6 +22,7 @@ class UsersController < ApplicationController
       'password' => params[:password])
     
     if @user.save
+      log_in(@user)
       redirect_to gossips_path
     else
       render 'new'

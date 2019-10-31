@@ -11,7 +11,10 @@
 	<p>"<%= @gossip.content %>"</p>
 	<p>Par <a href = <%= user_path(@gossip.user_id.to_s) %> > <%= @gossip.user.first_name %></a>, le : <%= @gossip.created_at %></p>
 
-	<p><a href=" <%= edit_gossip_path(@gossip.id.to_s) %> " class="btn btn-primary">Modifier le Gossip</a></p>
+	<% if @gossip.user_id == current_user.id%>
+	  <p><a href=" <%= edit_gossip_path(@gossip.id.to_s) %> " class="btn btn-primary">Modifier le Gossip</a></p>
+	<% end %>
+
 	<p><a href=" <%= gossips_path %> " class="btn btn-primary">Revenir aux Gossips</a></p>
 	
 </body>
