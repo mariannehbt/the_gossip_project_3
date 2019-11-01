@@ -5,18 +5,24 @@
 	<title>The Gossip Project - Gossips Show</title>
 </head>
 <body>
-	<h1>Gossips Show</h1>
-	<h2>Gossip n° <%= @gossip.id %> : <%= @gossip.title %></h2>
-	
-	<p>"<%= @gossip.content %>"</p>
-	<p>Par <a href = <%= user_path(@gossip.user_id.to_s) %> > <%= @gossip.user.first_name %></a> de <a href = <%= city_path(@gossip.user.city_id.to_s) %> > <%= @gossip.user.city.name %></a>, le : <%= @gossip.created_at %></p>
 
-	<% if @gossip.user_id == current_user.id%>
-	  <p><a href=" <%= edit_gossip_path(@gossip.id.to_s) %> " class="btn btn-primary">Modifier le Gossip</a></p>
-	  <p><%= link_to 'Delete gossip', @gossip, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %></p>
-	<% end %>
+	</br></br></br>
+	<div class="card text-center">
+		<div class="card-header">Gossip n° <%= @gossip.id %></div>
+		<div class="card-body">
+			<h5 class="card-title"><%= @gossip.title %></h5>
+			<p class="card-text">"<%= @gossip.content %>"</p>
 
-	<p><a href=" <%= gossips_path %> " class="btn btn-primary">Revenir aux Gossips</a></p>
+			<a href=" <%= gossips_path %> " class="btn btn-primary">Revenir aux Gossips</a>
+
+			<% if @gossip.user_id == current_user.id%>
+			<a href=" <%= edit_gossip_path(@gossip.id.to_s) %> " class="btn btn-warning">Modifier le Gossip</a>
+			<%= link_to 'Supprimer le Gossip', @gossip, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
+			<% end %>
+
+		</div>
+		<div class="card-footer text-muted">Par <a href = <%= user_path(@gossip.user_id.to_s) %> > <%= @gossip.user.first_name %></a> de <a href = <%= city_path(@gossip.user.city_id.to_s) %> > <%= @gossip.user.city.name %></a>, le : <%= @gossip.created_at %></div>
+	</div>	
 	
 </body>
 </html>

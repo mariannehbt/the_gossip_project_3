@@ -2,22 +2,40 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!------ Include the above in your HEAD tag ---------->
 	<title>The Gossip Project - Users Show</title>
 </head>
 <body>
-	<h1>Gossips Users</h1>
-	<h2><%= @user.first_name %> <%= @user.last_name %></h2>
-	<p>De <a href = <%= city_path(@user.city_id.to_s) %> > <%= @user.city.name %></a>, <%= @user.age %> ans</p>
-	<h3>Description</h3>
-	<p><%= @user.description %></p>
-	<h3>Email</h3>
-	<p><%= @user.email %></p>
-	<h3>Membre depuis le</h3>
-	<p><%= @user.created_at %></p>
-	<h3>Profil mis à jour le</h3>
-	<p><%= @user.updated_at %></p>
 
-	<p><a href=" <%= gossips_path %> " class="btn btn-primary">Revenir aux Gossips</a></p>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 img">
+				<p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvzOpl3-kqfNbPcA_u_qEZcSuvu5Je4Ce_FkTMMjxhB-J1wWin-Q"  alt="" class="img-rounded"></p>
+				<p><a href=" <%= gossips_path %> " class="btn btn-primary">Revenir aux Gossips</a></p>
+			</div>
+			<div class="col-md-6 details">
+				<blockquote>
+					<h5><%= @user.first_name %> <%= @user.last_name %></h5>
+					<small><cite title="Source Title">De <a href = <%= city_path(@user.city_id.to_s) %> > <%= @user.city.name %></a>, <%= @user.age %> ans<i class="icon-map-marker"></i></cite></small>
+				</blockquote>
+				<p>Description :<br>
+					"<%= @user.description %>"
+				</p>
+				<p>Email :<br>
+					<%= @user.email %>
+				</p>
+				<p>Membre depuis le :<br>
+					<%= @user.created_at %>
+				</p>
+				<p>Profil mis à jour le :<br>
+					<%= @user.updated_at %>
+				</p>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>

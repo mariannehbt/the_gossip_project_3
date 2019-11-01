@@ -5,24 +5,41 @@
 	<title>The Gossip Project - Cities Show</title>
 </head>
 <body>
+
 	<h1>Cities Show</h1>
 	<h2><%= @city.name %></h2>
 	<h3>Zip Code : <%= @city.zip_code %></h3>
 	<p><a href=" <%= gossips_path %> " class="btn btn-primary">Revenir aux Gossips</a></p></br>
 
-	<h4 class='text-primary'>They live here :</h4>
-	<p><% @city.users.each do |user| %>
-		<%= link_to user.first_name + ' ' + user.last_name, user_path(user), :class => 'btn btn-outline-warning'%>
-		<% end %></p>
+	<div class='container-fluid'>
+		<h4 class='text-primary'>Communauté de <%= @city.name %> : </h4>
+		<div class="list-group col-md-6 mb-3">
+			<% @city.users.each do |user| %>
+			<%= link_to user.first_name + ' ' + user.last_name, user_path(user), :class => 'list-group-item list-group-item-action'%>
+			<% end %>
+		</div>
+	</div>
 
-	<h4 class='text-primary'>Gossips written here :</h4>
-	<p><% @city.users.each do |user| %>
-		<% user.gossips.each do |gossip| %>
-		<%= link_to gossip.title, gossip_path(gossip), :class => 'btn btn-outline-info'%>
-		<% end %>
-		<% end %></p>
-	
+	<hr>
+
+	<div class='container-fluid'>
+		<h4 class='text-primary'>Gossips écrits à <%= @city.name %> :</h4>
+		<!-- Example row of columns -->
+		<div class ='row px-2 justify-content-around'>
+			<% @city.users.each do |user| %>
+			<% user.gossips.each do |gossip| %>
+			<div class ="card col-10 col-md-5 col-lg-3 mx-1 my-3 border-primary">
+				<div class="card-body">
+					<h2><%= gossip.title %></h2>
+					<p>par : <%= gossip.user.first_name %></p>
+					<p><a class="btn btn-secondary" href= <%= gossip_path(gossip.id.to_s) %> role="button"><%= "Gossip n°" + gossip.id.to_s %> &raquo;</a></p>
+				</div>
+			</div>
+			<% end %>
+			<% end %>
+		</div>
+		<hr>
+	</div> <!-- /container -->
+
 </body>
 </html>
-
-

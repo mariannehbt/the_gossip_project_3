@@ -5,23 +5,23 @@
 	<title>The Gossip Project - Gossips New</title>
 </head>
 <body>
-	<h1>Gossips New</h1>
-	<h2>Poste ton propre Gossip</h2>
+    <h1>Gossips New</h1>
+    <h2>Poste ton propre Gossip !</h2>
 
-	<%= form_tag url_for(action: 'create'), method: "post" do %>
+    <%= form_tag url_for(action: 'create'), method: "post" do %>
+        <div class="form-group col-md-6 mb-3">
+            <%= label_tag 'Titre' %>
+            <%= text_field_tag 'title', @gossip.title, :class => 'form-control', placeholder: 'Titre du Gossip' %>
+        </div>
 
-    <%= label_tag 'Title' %>
-    <%= text_field_tag 'title', @gossip.title %>
-    <br /> <br />
+        <div class="form-group col-md-6 mb-3">
+            <%= label_tag 'Contenu' %>
+            <%= text_area_tag 'content', @gossip.content, :class => 'form-control', placeholder: 'Contenu du Gossip', rows: 3 %>
+        </div>
 
-    <%= label_tag 'Content' %>
-    <%= text_area_tag 'content', @gossip.content %>
-    <br /> <br />
-
-    <%= submit_tag "Create Post" %>
-
-  <% end %>
-
-
+        <div class="form-group col-md-6 mb-3">
+            <%= submit_tag "Poster", :class => 'btn btn-primary' %>
+        </div>
+    <% end %>
 </body>
 </html>

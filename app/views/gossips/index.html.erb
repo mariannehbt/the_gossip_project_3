@@ -16,24 +16,23 @@
         </div>
       </div>
 
-      <div class="container">
+      <div class='container-fluid'>
         <!-- Example row of columns -->
 
-        <% @gossips.sort.each do |gossip| %>
-        <div class="row">
-          <div class="col-md-4">
-            <h2><%= gossip.title %></h2>
-            <p>par : <%= gossip.user.first_name %></p>
-            <p><a class="btn btn-secondary" href= <%= gossip_path(gossip.id.to_s) %> role="button"><%= "Gossip n°" + gossip.id.to_s %> &raquo;</a></p>
+        <div class ='row px-2 justify-content-around'>
+          <% @gossips.sort.each do |gossip| %>
+          <div class ="card col-10 col-md-5 col-lg-3 mx-1 my-3 border-primary">
+            <div class="card-body">
+              <h2><%= gossip.title %></h2>
+              <p>par : <%= gossip.user.first_name %></p>
+              <p><a class="btn btn-secondary" href= <%= gossip_path(gossip.id.to_s) %> role="button"><%= "Gossip n°" + gossip.id.to_s %> &raquo;</a></p>
+            </div>
           </div>
+          <% end %>
         </div>
-        <% end %>
 
         <hr>
-
       </div> <!-- /container -->
-
-    </main>
-
+  </main>
 </body>
 </html>
