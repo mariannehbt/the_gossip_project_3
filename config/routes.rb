@@ -2,6 +2,8 @@
 
 Rails.application.routes.draw do
 
+  root to: 'gossips#index'
+
   get 'team', to: 'static#team'
   get 'contact', to: 'static#contact'
 

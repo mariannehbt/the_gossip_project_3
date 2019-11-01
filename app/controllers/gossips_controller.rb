@@ -39,7 +39,13 @@ class GossipsController < ApplicationController
       title: params[:title],
       content: params[:content],
       user_id: current_user.id)
-    redirect_to gossips_path
+
+    if @gossip.save
+      flash[:success] = "Gossip bien modifié !"
+      redirect_to gossips_path
+    else
+      render :edit
+    end
   end
 
   def destroy
