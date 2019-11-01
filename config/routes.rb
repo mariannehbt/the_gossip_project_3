@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+
   get 'team', to: 'static#team'
   get 'contact', to: 'static#contact'
 
   resources :sessions, only: [:new, :create, :destroy]
+  resources :cities
   resources :users
   resources :gossips
   

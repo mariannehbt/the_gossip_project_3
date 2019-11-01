@@ -9,10 +9,11 @@
 	<h2>Gossip n° <%= @gossip.id %> : <%= @gossip.title %></h2>
 	
 	<p>"<%= @gossip.content %>"</p>
-	<p>Par <a href = <%= user_path(@gossip.user_id.to_s) %> > <%= @gossip.user.first_name %></a>, le : <%= @gossip.created_at %></p>
+	<p>Par <a href = <%= user_path(@gossip.user_id.to_s) %> > <%= @gossip.user.first_name %></a> de <a href = <%= city_path(@gossip.user.city_id.to_s) %> > <%= @gossip.user.city.name %></a>, le : <%= @gossip.created_at %></p>
 
 	<% if @gossip.user_id == current_user.id%>
 	  <p><a href=" <%= edit_gossip_path(@gossip.id.to_s) %> " class="btn btn-primary">Modifier le Gossip</a></p>
+	  <p><%= link_to 'Delete gossip', @gossip, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %></p>
 	<% end %>
 
 	<p><a href=" <%= gossips_path %> " class="btn btn-primary">Revenir aux Gossips</a></p>

@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>The Gossip Project - Cities Show</title>
+</head>
+<body>
+	<h1>Cities Show</h1>
+	<h2><%= @city.name %></h2>
+	<h3>Zip Code : <%= @city.zip_code %></h3>
+	<p><a href=" <%= gossips_path %> " class="btn btn-primary">Revenir aux Gossips</a></p></br>
+
+	<h4 class='text-primary'>They live here :</h4>
+	<p><% @city.users.each do |user| %>
+		<%= link_to user.first_name + ' ' + user.last_name, user_path(user), :class => 'btn btn-outline-warning'%>
+		<% end %></p>
+
+	<h4 class='text-primary'>Gossips written here :</h4>
+	<p><% @city.users.each do |user| %>
+		<% user.gossips.each do |gossip| %>
+		<%= link_to gossip.title, gossip_path(gossip), :class => 'btn btn-outline-info'%>
+		<% end %>
+		<% end %></p>
+	
+</body>
+</html>
+
+

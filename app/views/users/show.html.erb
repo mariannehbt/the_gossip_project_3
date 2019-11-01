@@ -7,7 +7,7 @@
 <body>
 	<h1>Gossips Users</h1>
 	<h2><%= @user.first_name %> <%= @user.last_name %></h2>
-	<p>De <%= @user.city.name %>, <%= @user.age %> ans</p>
+	<p>De <a href = <%= city_path(@user.city_id.to_s) %> > <%= @user.city.name %></a>, <%= @user.age %> ans</p>
 	<h3>Description</h3>
 	<p><%= @user.description %></p>
 	<h3>Email</h3>

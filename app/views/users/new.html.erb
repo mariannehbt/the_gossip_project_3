@@ -37,7 +37,9 @@
 			</div>
 			<div class="col-md-6 mb-3">
 				<%= label_tag 'Ville' %><br />
-				<%= text_field_tag 'city_id', @user.city_id, :class => 'form-control', placeholder: 'Paris' %>
+				<%= select_tag 'city_id', options_from_collection_for_select(City.all, :id, :name), :class => 'form-control' %>
+				
+				
 			</div>
 		</div>
 
